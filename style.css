@@ -14,12 +14,13 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 550px;
+    width: 500px;
 }
 
 h1{
     color:rgb(91, 116, 107);
     font-family: "Gill Sans";
+    font-size: 27px;
 }
 
 h2{
@@ -31,19 +32,26 @@ form {
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
+    flex-direction: column;
+    padding: 40px;
 }
 
 label{
     margin-right: 15px;
+    margin-bottom: 15px;
 }
 
 input {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    margin-right: 10px;
+    margin-bottom: 10px;
     flex: 1;
     border: 2px solid #92b594;
+    font-size: 15px;
+    width: 100%; 
+    margin-left: 40px;
+    margin-right: 40px;
 }
 
 button {
@@ -84,9 +92,41 @@ button:hover {
 
 img {
     max-width: 100%;
+    height: auto;
+    width: 150px; 
+    height: 150px; 
 }
 
 ul {
     list-style-type: none;
     padding: 0;
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 90%; 
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    input {
+        font-size: 14px; 
+    }
+
+    button {
+        padding: 10px 10px; 
+        font-size: 14px;
+    }
+
+    img {
+        width: 100px;   
+        height: 100px;
+    }
 }
