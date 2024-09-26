@@ -7,27 +7,50 @@ document.getElementById('pokemonForm').addEventListener('submit', function(e) {
     fetch(apiUrl)
         .then(response => {
             if (!response.ok) {
-                throw new Error('Pokemon no encontrado');
+                throw new Error('Pokémon no encontrado');
             }
             return response.json();
         })
         .then(data => {
-            document.getElementById('name').textContent = data.name.toUpperCase();
-            document.getElementById('id').textContent = data.id;
-            document.getElementById('sprite').src = data.sprites.front_default;
-            document.getElementById('height').textContent = data.height / 10 + ' m';
-            document.getElementById('weight').textContent = data.weight / 10 + ' kg';
+            const pokemonContainer = document.createElement('div');
+            pokemonContainer.classList.add('pokemon-container');
 
-            const types = data.types.map(typeInfo => typeInfo.type.name).join(', ');
-            document.getElementById('types').textContent = types;
+            const nameElement = document.createElement('h2');
+            nameElement.textContent = data.name.toUpperCase();
 
-            const abilities = data.abilities.map(abilityInfo => abilityInfo.ability.name).join(', ');
-            document.getElementById('abilities').textContent = abilities;
+            const idElement = document.createElement('p');
+            idElement.innerHTML = `<strong style="color: #95b198;">ID:</strong> ${data.id}`;
 
-            document.getElementById('pokemonInfo').classList.remove('hidden');
+            const spriteElement = document.createElement('img');
+            spriteElement.src = data.sprites.front_default;
+
+            const heightElement = document.createElement('p');
+            heightElement.innerHTML = `<strong style="color: #95b198;">Altura:</strong> ${data.height / 10} m`;
+
+            const weightElement = document.createElement('p');
+            weightElement.innerHTML = `<strong style="color: #95b198;">Peso:</strong> ${data.weight / 10} kg`;
+
+            const typesElement = document.createElement('p');
+            typesElement.innerHTML = `<strong style="color: #95b198;">Tipo(s):</strong> ${data.types.map(typeInfo => typeInfo.type.name).join('<br>')}`;
+
+            const abilitiesElement = document.createElement('p');
+            abilitiesElement.innerHTML = `<strong style="color: #95b198;">Habilidades:</strong> ${data.abilities.map(abilityInfo => abilityInfo.ability.name).join('<br>')}`;
+
+            pokemonContainer.appendChild(nameElement);
+            pokemonContainer.appendChild(idElement);
+            pokemonContainer.appendChild(spriteElement);
+            pokemonContainer.appendChild(heightElement);
+            pokemonContainer.appendChild(weightElement);
+            pokemonContainer.appendChild(typesElement);
+            pokemonContainer.appendChild(abilitiesElement);
+
+            const pokemonInfo = document.getElementById('pokemonInfo');
+
+            pokemonInfo.insertBefore(pokemonContainer, pokemonInfo.firstChild);
+
+            pokemonInfo.classList.remove('hidden');
         })
         .catch(error => {
             alert('Error: ' + error.message);
-            document.getElementById('pokemonInfo').classList.add('hidden');
         });
 });

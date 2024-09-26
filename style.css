@@ -3,9 +3,10 @@ body {
     background-color: #d3ead5;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    padding: 20px;
     margin: 0;
+    height: auto; 
+    min-height: 100vh; 
 }
 
 .container {
@@ -15,16 +16,8 @@ body {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 500px;
-}
-
-h1{
-    color:rgb(91, 116, 107);
-    font-family: "Gill Sans";
-    font-size: 27px;
-}
-
-h2{
-    color: #92b594;
+    max-height: 90vh; 
+    overflow-y: auto; 
 }
 
 form {
@@ -33,23 +26,29 @@ form {
     align-items: center;
     margin-bottom: 20px;
     flex-direction: column;
-    padding: 40px;
+    padding: 30px;
 }
 
-label{
+
+h1 {
+    color: rgb(91, 116, 107);
+    font-family: "Gill Sans";
+    font-size: 27px;
+}
+
+label {
     margin-right: 15px;
     margin-bottom: 15px;
 }
 
 input {
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 2px solid #92b594;
     border-radius: 4px;
     margin-bottom: 10px;
     flex: 1;
-    border: 2px solid #92b594;
     font-size: 15px;
-    width: 100%; 
+    width: 100%;
     margin-left: 40px;
     margin-right: 40px;
 }
@@ -64,30 +63,30 @@ button {
     white-space: nowrap;
 }
 
-p strong{
-    color: #708870;
-    font-size: 19px;
-}
-
-p{
-    font-size: 17px;
-}
-
-.estadistica{
-    color:rgb(91, 116, 107);
-    font-size: 24px;
-}
-
 button:hover {
     background-color: #708870;
 }
 
 #pokemonInfo {
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espacio entre cada contenedor */
 }
 
-#pokemonInfo.hidden {
-    display: none;
+.pokemon-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.pokemon-container h2 {
+    color: #98b599; 
 }
 
 img {
@@ -95,11 +94,6 @@ img {
     height: auto;
     width: 150px; 
     height: 150px; 
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
 }
 
 @media (max-width: 600px) {
@@ -110,10 +104,6 @@ ul {
 
     h1 {
         font-size: 24px;
-    }
-
-    h2 {
-        font-size: 20px;
     }
 
     input {
